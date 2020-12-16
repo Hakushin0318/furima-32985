@@ -27,7 +27,7 @@
 | state_id           | integer    | null: false                    |
 | delivery_fee_id    | integer    | null: false                    |
 | delivery_source_id | integer    | null: false                    |
-| delivery_days      | date       | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 
 ### Association
@@ -52,10 +52,7 @@
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| item_buys            | references | null: false, foreign_key: true |
-| card_number          | string     | null: false                    |
-| card_expiration_date | date       | null: false                    |
-| card_code            | integer    | null: false                    |
+| item_buy             | references | null: false, foreign_key: true |
 | postal_code          | integer    | null: false                    |
 | prefecture_id        | integer    | null: false                    |
 | municipality         | string     | null: false                    |
