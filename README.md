@@ -58,7 +58,7 @@
 | municipality         | string     | null: false                    |
 | address              | string     | null: false                    |
 | building_name        | string     |                                |
-| phone number         | integer    | null: false                    |
+| phone_number         | string     | null: false                    |
 
 ### Association
 
