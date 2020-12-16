@@ -13,46 +13,56 @@
 
 ### Association
 
-- has_many :products
-- has_many :items_buy
-- belongs_to :address
+- has_many :items
+- has_many :item_buys
 
 ## items テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
-| item_name          | string     | null: false                    |
-| item_details       | text       | null: false                    |
+| name               | string     | null: false                    |
+| details            | text       | null: false                    |
 | category_id        | integer    | null: false                    |
-| item_state_id      | integer    | null: false                    |
+| state_id           | integer    | null: false                    |
 | delivery_fee_id    | integer    | null: false                    |
 | delivery_source_id | integer    | null: false                    |
 | delivery_days      | date       | null: false                    |
-| item_price         | integer    | null: false                    |
+| price              | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :items_buy
+- has_one :item_buy
 
-## Items_buy テーブル
+## item_buys テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| item   | references | null: false                    |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
-## Address テーブル
+## addresses テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| address | string     | null: false                    |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| item_buys            | references | null: false, foreign_key: true |
+| card_number          | string     | null: false                    |
+| card_expiration_date | date       | null: false                    |
+| card_code            | integer    | null: false                    |
+| postal_code          | integer    | null: false                    |
+| prefecture_id        | integer    | null: false                    |
+| municipality         | string     | null: false                    |
+| address              | string     | null: false                    |
+| building_name        | string     |                                |
+| phone number         | integer    | null: false                    |
 
-- belongs_to :user
+### Association
+
+- belongs_to :item_buy
