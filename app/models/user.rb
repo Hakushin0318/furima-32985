@@ -22,4 +22,6 @@ class User < ApplicationRecord
       validates :last_name_ruby
     end
   end
+
+  has_many :items
 end
