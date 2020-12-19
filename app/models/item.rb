@@ -20,6 +20,6 @@ class Item < ApplicationRecord
       validates :delivery_source_id
       validates :delivery_day_id
     end
-    validates :price, inclusion:{in: 300..9_999_999}
+    validates :price, inclusion:{in: 300..9_999_999}, format: { with: /^[0-9]+$/ }
   end
 end
