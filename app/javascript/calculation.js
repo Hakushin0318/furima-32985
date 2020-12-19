@@ -1,7 +1,7 @@
 function calculation (){
   const itemPrice  = document.getElementById("item-price");
   itemPrice.addEventListener("keyup", () => {
-    // const fee = Number(itemPrice) % 10;
+
     const inputValue = itemPrice.value;
 
     const addTaxPrice  = document.getElementById("add-tax-price");

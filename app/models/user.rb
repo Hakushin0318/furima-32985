@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :birthday
 
-    with_options format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze } do
+    with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze } do
       validates :password
     end
 

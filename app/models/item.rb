@@ -5,19 +5,15 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :state
   belongs_to :delivery_fee
-  belongs_to :delivary_source
-  belongs_to :delivary_day
+  belongs_to :delivery_source
+  belongs_to :delivery_day
 
   with_options presence: true do
     validates :name
     validates :details
-    validates :category_id
-    validates :state_id
-    validates :delivery_fee_id
-    validates :delivery_source_id
-    validates :delivery_day_id
+    validates :image
 
-    with_options inclusion: {in: 300..9999999 } do
+    with_options inclusion: { in: 300..9_999_999 } do
       validates :price
     end
 
