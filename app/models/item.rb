@@ -13,10 +13,6 @@ class Item < ApplicationRecord
     validates :details
     validates :image
 
-    with_options inclusion: { in: 300..9_999_999 } do
-      validates :price
-    end
-
     with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :state_id
@@ -24,5 +20,6 @@ class Item < ApplicationRecord
       validates :delivery_source_id
       validates :delivery_day_id
     end
+    validates :price, inclusion:{in: 300..9_999_999}
   end
 end
