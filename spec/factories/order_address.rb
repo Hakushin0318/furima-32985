@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :address do
+  factory :order_address do
     postal_code { "222-2222" }
     prefecture_id { 2 }
     city { Faker::Lorem.sentence }
