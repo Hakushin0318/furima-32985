@@ -9,6 +9,11 @@ RSpec.describe OrderAddress, type: :model do
       it "postal_code、prefecture_id、city、address、phone_number、tokenが全てあれば登録できる" do
         expect(@order_address).to be_valid
       end
+      it "建物名が抜けていても登録できること" do
+        @order_address.building_name = nil
+        @order_address.valid?
+        expect(@order_address).to be_valid
+      end
     end
 
     context '商品購入がうまくいかない時' do
@@ -28,6 +33,9 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it "prefecture_idが1だと登録できない" do
+        @order_address.prefecture_id = 1
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it "cityが空だと登録できない" do
         @order_address.city = nil
@@ -44,8 +52,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it "phone_numberが11桁以内出ないと登録できない" do
+      it "phone_numberが11桁以内でないと登録できない" do
         @order_address.phone_number = 12345123451234
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "phone_numberが英数混合では登録できないこと" do
+        @order_address.phone_number = "s1s1s1s1s1"
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
