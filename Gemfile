@@ -69,3 +69,5 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 
 gem 'rails_12factor', group: :production
+
+gem 'payjp'
